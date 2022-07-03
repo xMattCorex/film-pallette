@@ -30,31 +30,30 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/gray" />
 
             <ImageView
                 android:id="@+id/picturePreview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:gravity="center"
-                android:text="Choose picture:"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Add caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/cardViewPicturePreview"/>
 
     <com.royrodriguez.transitionbutton.TransitionButton
         android:id="@+id/generateButton"
