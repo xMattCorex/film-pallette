@@ -1,6 +1,6 @@
 package com.mattcore.filmpallette
 
-import android.content.Intent
+import android.R
 import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import android.media.MediaScannerConnection
@@ -9,13 +9,18 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.palette.graphics.Palette
+import androidx.transition.Fade
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.mattcore.filmpallette.databinding.ActivityRevealBinding
 import java.io.File
 import java.io.FileOutputStream
+
 
 class RevealActivity : AppCompatActivity() {
 
@@ -32,14 +37,14 @@ class RevealActivity : AppCompatActivity() {
         path = intent.extras!!.get(MainActivity.KEY_PATH) as Uri
         caption = intent.extras!!.getString(MainActivity.KEY_CAPTION) as String
         val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, path)
-        palette = Palette.from(bitmap).maximumColorCount(4).generate()
+        palette = Palette.from(bitmap).maximumColorCount(24).generate()
 
         binding.caption.text = " $caption "
 
-        binding.color1.setImageDrawable(ColorDrawable(palette.swatches[0].rgb))
-        binding.color2.setImageDrawable(ColorDrawable(palette.swatches[1].rgb))
-        binding.color3.setImageDrawable(ColorDrawable(palette.swatches[2].rgb))
-        binding.color4.setImageDrawable(ColorDrawable(palette.swatches[3].rgb))
+        binding.color1.setImageDrawable(ColorDrawable(palette.dominantSwatch!!.rgb))
+        binding.color2.setImageDrawable(ColorDrawable(palette.swatches[0].rgb))
+        binding.color3.setImageDrawable(ColorDrawable(palette.swatches[1].rgb))
+        binding.color4.setImageDrawable(ColorDrawable(palette.swatches[2].rgb))
 
         binding.container.layoutParams.height = binding.container.width
         binding.picture.setImageURI(path)
@@ -50,6 +55,8 @@ class RevealActivity : AppCompatActivity() {
                 saveFile(this)
             }
         }
+        fadeReveal(binding.container, 1000)
+        fadeReveal(binding.saveButton,1000, 800)
     }
 
     private fun saveFile(layout: ConstraintLayout) {
@@ -82,5 +89,17 @@ class RevealActivity : AppCompatActivity() {
             file.mkdirs()
         }
         return File(file.absolutePath + "/palette_${System.currentTimeMillis()}" + ".png")
+    }
+
+    private fun fadeReveal(view: View, time: Long, delay: Long =0) {
+        view.apply {
+            alpha = 0f
+            visibility = View.VISIBLE
+            animate()
+                .alpha(1f)
+                .setDuration(time)
+                .setListener(null)
+                .startDelay = delay
+        }
     }
 }

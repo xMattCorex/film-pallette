@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#B1B1B1</color>
+    <color name="colorPrimary">#97daf4</color>
+    <color name="colorPrimaryVariant">#3b94ce</color>
+    <color name="colorOnPrimary">#e5f6fd</color>
+    <!-- Secondary brand color. -->
+    <color name="colorSecondary">#f4b297</color>
+    <color name="colorSecondaryVariant">#db5b1e</color>
+    <color name="colorOnSecondary">#434343</color>
 </resources>

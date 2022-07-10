@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorOnPrimary"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -65,8 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="Generate"
-        android:textColor="@android:color/white"
-        app:defaultColor="@color/purple_500"
+        android:textColor="@color/colorOnSecondary"
+        app:defaultColor="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
