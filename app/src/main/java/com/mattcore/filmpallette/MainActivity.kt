@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         button.text = "Generate"
         button.isClickable = true
         button.clearAnimation()
-
     }
 
 
