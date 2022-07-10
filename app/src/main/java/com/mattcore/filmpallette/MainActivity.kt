@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.Toast
 import androidx.palette.graphics.Palette
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.cardViewPicturePreview.setOnClickListener {
             ImagePicker.with(this)
-                .crop(16f, 9f)
                 .galleryOnly()
                 .start(REQUEST_CODE_PICTURE_PICKER)
         }
@@ -61,9 +61,9 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         val button = binding.generateButton
 
-        button.clearAnimation()
         button.text = "Generate"
         button.isClickable = true
+        button.clearAnimation()
     }
 
 
